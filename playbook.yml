@@ -1,0 +1,38 @@
+- name: Execution shell 
+  hosts: "{{ server }}"
+  remote_user: root
+  tasks:
+    - name: create workplace
+      file:
+        path: /workspace
+        state: directory
+        mode: "0755"
+      
+    - name: copy shell
+      copy:
+        src: shell.sh
+        dest: /workspace
+
+        mode: '0755'
+
+    - name: copy proxyconf
+      copy:
+        src: reverse_proxy.conf
+        dest: /workspace
+        mode: '0755'
+
+    - name: copy apache2portconf
+      copy:
+        src: ports.conf
+        dest: /workspace
+        mode: '0755'
+
+    - name: copyindex
+      copy:
+        src: index.html
+        dest: /workspace
+        mode: '0755'
+    
+    - name: execute shell
+      shell: /workspace/shell.sh
+
