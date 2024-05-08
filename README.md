@@ -44,7 +44,7 @@ sshpass -p "mot_de_passe_root_rasbppery" ssh-copy-id root@rasbppery
 
 ######### Etape 1 : Fin configuration SSH ############# 
 
-##depuis ta machine master essaye ssh root@rasbppery tu seras connectée en tant que root sur rasbperry
+##depuis la machine master essaye ssh root@rasbppery on est connect" en tant que root sur rasbperry
 
 ########################################### 
 
@@ -56,7 +56,7 @@ yes "" |apt install rkhunter
 rkhunter -c   ###### lancer le check ou scan khunter #########
 
 
-###install ansible sur ta machine ######
+###install ansible sur la machine ######
 
 yes "" | apt install ansible
 
