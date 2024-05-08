@@ -14,14 +14,14 @@ sed -i 's/#PubkeyAuthentication yes/PubkeyAuthentication yes/g' /etc/ssh/sshd_co
 sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/g' /etc/ssh/sshd_config
 systemctl restart ssh 
 
-	
+
 #### sur machine master en tant que root:####
 echo "ip_addresse_rasbppery  rasbppery" >> /etc/hosts   # remplace ip_addresse_rasbppery par ip 
 echo " ip_addresse_rasbppery  www.lisa.dubois" >> /etc/hosts # remplace ip_addresse_rasbppery par ip
 yes "" |apt install openssh-client 
 yes "" |apt-install shhpass
-	
-	
+
+ 
 ######### sur machine master en tant que user:#######
 yes "" |ssh-keygen -t rsa
 sshpass -p "mot_de_passe_root_rasbppery" ssh-copy-id root@rasbppery
