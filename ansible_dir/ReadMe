@@ -23,3 +23,11 @@ Dans un premier temps :
 
 Après l'ajout des règles iptables, procéder au même test pour s'assurer que c'est filtrer.
 
+Description des règles ajouter : 
+- autoriser les connexions : SSH, HTTP, HTTPS
+- autoriser les connexions entrante venant du réseau local 192.168.10.1/24
+- autoriser les connexions établies et reliées : c'est à dire, lorsque j'ai une connexion, je l'a maintient en acceptant le flux entrant et sortant
+- refuser le reste : c'est à dire drop en input et en forward
+- note : AJOUTER PING INPUT / OUTPUT ACCEPT icmp
+Remarque : la dernière étape consiste à sauvegarder les règles afin qu'elles deviennent persistente (si on reboot / éteint la machine, les règles ne disparraissent pas)
+
