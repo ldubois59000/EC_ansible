@@ -15,7 +15,8 @@ ssh -i /tmp/lisa test@raspi
 
 IPTABLES : 
 #### Rappel iptables, qu'est ce que c'est : ###
-Iptables permet de configurer le pare-feu de l’ordinateur. Il permet de contrôler les paquets réseau entrant et sortant de l’ordinateur en utilisant un ensemble de règles définies par l’administrateur du système.
+Iptables permet de configurer le pare-feu de l’ordinateur. 
+Il permet de contrôler les paquets réseau entrant et sortant de l’ordinateur en utilisant un ensemble de règles définies par l’administrateur du système.
 
 Pour vérifier que nos règles iptable fonctionne bien :
 Dans un premier temps : 
