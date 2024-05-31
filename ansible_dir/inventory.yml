@@ -5,8 +5,3 @@ all:
         ma_raspi:
           ansible_host: 192.168.10.86
           ansible_user: ec
-
-#  localhost:
-#    hosts:
-#     ansible_host: 127.0.0.1
-#     ansible_user: ldubois
