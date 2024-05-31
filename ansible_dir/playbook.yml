@@ -29,3 +29,12 @@
         state: present
       become: yes
 
+- name: Modification du hostname
+  hosts: machine
+  become: yes
+  tasks:
+    - name: Définir le nouveau hostname
+      hostname:
+        name: raspi
+
+
