@@ -1,0 +1,11 @@
+Création d'une clé SSH sur la machine Master (localhost) dans /tmp
+Création sur la machine cible d'un utilisateur (ici nommé test) 
+Déploiment sur cet utilisateur de la clé SSH.
+
+Pour tester : 
+sur la raspi :
+id test - vérifier la bonne création de l'user
+sudo ls /home/test/.ssh - vérifier la création de authorized_keys
+
+sur la machine master : 
+ssh -i /tmp/lisa test@192.168.10.86 
