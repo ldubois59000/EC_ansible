@@ -9,3 +9,6 @@ sudo ls /home/test/.ssh - vérifier la création de authorized_keys
 
 sur la machine master : 
 ssh -i /tmp/lisa test@192.168.10.86 
+
+avec l'ajout de l'hostname on peut maintenant se connecter sans renseigner l'adresse ip cible : 
+ssh -i /tmp/lisa test@raspi
