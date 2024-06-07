@@ -1,0 +1,23 @@
+- name: Déploiement SSH
+  hosts: machine
+  become: yes
+  roles:
+    - deploy_ssh
+
+- name: Modification du hostname
+  hosts: machine
+  become: yes
+  roles:
+    - set_hostname
+
+- name: Configuration du firewall
+  hosts: machine
+  become: yes
+  roles:
+    - configure_firewall
+
+- name: Installation et configuration de Fail2ban
+  hosts: machine
+  become: yes
+  roles:
+    - install_fail2ban
