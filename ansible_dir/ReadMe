@@ -48,5 +48,6 @@ Description des actions réalisés par ansible :
 - Crée ou mettre à jour le fichier de configuration jail.local pour Fail2ban avec les règles pour SSH, Apache (et plus tard Nginx)
 - [sshd] : Configure Fail2ban pour surveiller les logs SSH.
 
+Tester le bon fonctionnement : service fail2ban status
 
 
