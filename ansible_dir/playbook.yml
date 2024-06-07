@@ -45,13 +45,6 @@
      apt:
       name: iptables-persistent
       state: present
-    
-   - name: Refuser les connexions entrantes sur le port 4000
-     iptables:
-       chain: INPUT
-       protocol: tcp
-       destination_port: 4000
-       jump: REJECT
   
    - name: Autoriser les connexions SSH
      iptables:
@@ -101,6 +94,19 @@
        ctstate: ESTABLISHED,RELATED
        jump: ACCEPT
 
+   - name: icmp accept
+     iptables:
+       chain: INPUT
+       protocol: icmp
+       jump: ACCEPT
+
+   - name: icmp accept
+     iptables:
+       chain: OUTPUT
+       protocol: icmp
+       jump: ACCEPT
+
+
    - name: Refuser les autres connexions en INPUT
      iptables:
        chain: INPUT
@@ -113,5 +119,39 @@
 
    - name: Sauvegarder les règles iptables
      shell: iptables-save > /etc/iptables/rules.v4
-       
 
+- name: Installation et configuration de Fail2ban
+  hosts: machine
+  become: yes
+  tasks:
+    - name: Installer Fail2ban
+      apt:
+        name: fail2ban
+        state: present
+        update_cache: yes
+
+    - name: Assurer que le service Fail2ban est démarré et activé au démarrage
+      service:
+        name: fail2ban
+        state: started
+        enabled: yes
+
+    - name: Configurer Fail2ban pour SSH, HTTP et HTTPS
+      copy:
+        dest: /etc/fail2ban/jail.local
+        content: |
+          [DEFAULT]
+          bantime  = 600
+          findtime  = 600
+          maxretry = 3
+
+          [sshd]
+          enabled = true
+          port    = ssh
+          logpath = /var/log/auth.log
+          backend = systemd
+
+    - name: Redémarrer Fail2ban pour appliquer les nouvelles configurations
+      service:
+        name: fail2ban
+        state: restarted
