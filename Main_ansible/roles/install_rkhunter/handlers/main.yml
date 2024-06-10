@@ -1,0 +1,2 @@
+- name: Run rkhunter --propupd
+  command: rkhunter --propupd

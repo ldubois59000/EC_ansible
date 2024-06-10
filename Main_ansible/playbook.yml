@@ -1,5 +1,5 @@
 - name: Déploiement SSH
-  hosts: machine
+  hosts: all
   become: yes
   roles:
     - deploy_ssh
@@ -10,14 +10,26 @@
   roles:
     - set_hostname
 
-- name: Configuration du firewall
+#- name: Configuration du firewall
+#  hosts: machine
+#  become: yes
+#  roles:
+#    - configure_firewall
+
+- name: Installer Docker SDK pour Python
   hosts: machine
   become: yes
   roles:
-    - configure_firewall
+  - install_docker
+
+- name: Installation et configuration de Nginx avec Docker
+  hosts: machine
+  become: yes
+  roles:
+  - nginx_docker
 
 - name: Installation et configuration de Fail2ban
   hosts: machine
   become: yes
   roles:
-    - install_fail2ban
+  - install_fail2ban

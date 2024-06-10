@@ -25,6 +25,12 @@
       logpath = /var/log/auth.log
       backend = systemd
 
+      [nginx-http-auth]
+      enabled = true
+      port  = http,https
+      logpath = /var/log/nginx/error.log
+      maxretry = 3
+
 - name: Redémarrer Fail2ban pour appliquer les nouvelles configurations
   service:
     name: fail2ban

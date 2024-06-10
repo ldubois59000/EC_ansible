@@ -1,0 +1,29 @@
+- name: Installer rkhunter
+  apt:
+    name: rkhunter
+    state: present
+    update_cache: yes
+
+- name: Corriger la configuration WEB_CMD de rkhunter
+  lineinfile:
+    path: /etc/rkhunter.conf
+    regexp: '^WEB_CMD='
+    line: 'WEB_CMD=/usr/bin/wget'
+  notify:
+    - Run rkhunter --propupd
+
+- name: Mettre à jour les fichiers de rkhunter
+  command: rkhunter --update
+
+- name: Configurer rkhunter
+  copy:
+    dest: /etc/rkhunter.conf
+    src: rkhunter.conf.j2
+  notify: 
+    - Run rkhunter --propupd
+
+- name: Planifier une vérification quotidienne avec rkhunter
+  cron:
+    name: "rkhunter daily check"
+    special_time: daily
+    job: "/usr/bin/rkhunter --check --cronjob"
