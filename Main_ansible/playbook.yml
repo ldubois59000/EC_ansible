@@ -10,11 +10,11 @@
   roles:
     - set_hostname
 
-#- name: Configuration du firewall
-#  hosts: machine
-#  become: yes
-#  roles:
-#    - configure_firewall
+- name: Configuration du firewall
+  hosts: machine
+  become: yes
+  roles:
+    - configure_firewall
 
 - name: Installer Docker SDK pour Python
   hosts: machine
@@ -27,6 +27,12 @@
   become: yes
   roles:
   - nginx_docker
+
+#- name: Installation et configuration de Pihole avec Docker
+#  hosts: machine
+#  become: yes
+#  roles:
+#  - docker_pihole
 
 - name: Installation et configuration de Fail2ban
   hosts: machine
