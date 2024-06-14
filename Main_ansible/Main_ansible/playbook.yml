@@ -1,0 +1,59 @@
+- name: Déploiement SSH
+  hosts: all
+  become: yes
+  roles:
+    - deploy_ssh
+
+- name: Modification du hostname
+  hosts: machine
+  become: yes
+  roles:
+    - set_hostname
+
+- name: Configuration du firewall
+  hosts: machine
+  become: yes
+  roles:
+    - configure_firewall
+
+- name: Installer Docker SDK pour Python
+  hosts: machine
+  become: yes
+  roles:
+  - install_docker
+
+- name: Installation et configuration de Nginx avec Docker
+  hosts: machine
+  become: yes
+  roles:
+  - nginx_docker
+
+#- name: Installation et configuration de Pihole avec Docker
+#  hosts: machine
+#  become: yes
+#  roles:
+#  - docker_pihole
+
+- name: Installer postfix (pour les rapports de rkhunter & logwatch par mail)
+  hosts: machine
+  become: yes
+  roles:
+  - install_postfix
+
+#- name: Installation et configuration de RKhunter
+#  hosts: machine
+#  become: yes
+#  roles:
+#  - deploy_rkhunter
+
+- name: Installation et configuration de logwatch
+  hosts: machine
+  become: yes
+  roles:
+  - deploy_logwatch
+
+- name: Installation et configuration de Fail2ban
+  hosts: machine
+  become: yes
+  roles:
+  - install_fail2ban

@@ -1,0 +1,37 @@
+- name: Installer Fail2ban
+  apt:
+    name: fail2ban
+    state: present
+    update_cache: yes
+
+- name: Assurer que le service Fail2ban est démarré et activé au démarrage
+  service:
+    name: fail2ban
+    state: started
+    enabled: yes
+
+- name: Configurer Fail2ban pour SSH, HTTP et HTTPS
+  copy:
+    dest: /etc/fail2ban/jail.local
+    content: |
+      [DEFAULT]
+      bantime  = 600
+      findtime  = 600
+      maxretry = 3
+
+      [sshd]
+      enabled = true
+      port    = ssh
+      logpath = /var/log/auth.log
+      backend = systemd
+
+      [nginx-http-auth]
+      enabled = true
+      port  = http,https
+      logpath = /var/log/nginx/error.log
+      maxretry = 3
+
+- name: Redémarrer Fail2ban pour appliquer les nouvelles configurations
+  service:
+    name: fail2ban
+    state: restarted

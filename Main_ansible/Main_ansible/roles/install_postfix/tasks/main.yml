@@ -1,0 +1,17 @@
+- name: Install Postfix
+  apt:
+    name: postfix
+    state: present
+
+- name: Configure /etc/postfix/main.cf
+  template:
+    src: etc/postfix/main.cf.j2
+    dest: /etc/postfix/main.cf
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Restart Postfix
+  service:
+    name: postfix
+    state: restarted

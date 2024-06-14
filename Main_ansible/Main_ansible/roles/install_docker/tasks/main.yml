@@ -1,0 +1,4 @@
+- name: Installer le module Docker SDK pour Python
+  apt:
+    name: python3-docker
+    state: present

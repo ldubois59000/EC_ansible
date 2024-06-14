@@ -1,0 +1,25 @@
+- name: Ensure Docker is installed
+  apt:
+    name: docker.io
+    state: present
+    update_cache: yes
+
+- name: Ensure Docker is running
+  service:
+    name: docker
+    state: started
+    enabled: yes
+
+- name: Pull Nginx image
+  docker_image:
+    name: nginx
+    source: pull
+
+- name: Run Nginx container
+  docker_container:
+    name: nginx
+    image: nginx
+    state: started
+    ports:
+      - "8081:80"
+    restart_policy: always

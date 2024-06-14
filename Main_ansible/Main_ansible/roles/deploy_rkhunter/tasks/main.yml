@@ -1,0 +1,27 @@
+- name: Install RKHunter
+  apt:
+    name: rkhunter
+    state: present
+
+- name: Configure /etc/rkhunter.conf
+  template:
+    src: etc/rkhunter.conf.j2
+    dest: /etc/rkhunter.conf
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Configure /etc/default/rkhunter
+  template:
+    src: etc/default/rkhunter.j2
+    dest: /etc/default/rkhunter
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Run RKHunter database update
+  command: rkhunter --update
+
+- name: Run RKHunter with checks
+  command: rkhunter --checkall --sk
+  no_log: true

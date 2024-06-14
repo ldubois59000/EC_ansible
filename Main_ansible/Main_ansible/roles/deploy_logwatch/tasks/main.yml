@@ -1,0 +1,14 @@
+- name: Install Logwatch
+  apt:
+    name: logwatch
+    state: present
+    update_cache: yes
+
+
+- name: Execute Logwatch and display output
+  command: logwatch --output stdout --detail high
+  register: logwatch_output
+
+- name: Print Logwatch output
+  debug:
+    var: logwatch_output.stdout
