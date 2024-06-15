@@ -1,1 +1,26 @@
 Description des services : 
+IPTABLES : firewall
+#### Rappel iptables, qu'est ce que c'est : ###
+Iptables permet de configurer le pare-feu de l’ordinateur. 
+Il permet de contrôler les paquets réseau entrant et sortant de l’ordinateur en utilisant un ensemble de règles définies par l’administrateur du système.
+
+Pour vérifier que nos règles iptable fonctionne bien :
+Dans un premier temps : 
+- installer netcat sur raspberry & machine master :sudo apt install netcat-openbsd
+- sur la raspberry lancer netcat en mode "écoute" sur le port 4000 : nc -l 4000 
+- sur une autre machine, envoyer "bonjour" sur le port 4000 de la raspberry : echo "bonjour" | nc raspi 4000
+=> CONCLUSION : sans les règles iptables, on reçoit sur la raspberry "bonjour" 
+
+Après l'ajout des règles iptables, procéder au même test pour s'assurer que c'est filtrer.
+
+Description des règles ajouter : 
+- autoriser les connexions : SSH, HTTP, HTTPS
+- autoriser les connexions entrante venant du réseau local 192.168.10.1/24
+- autoriser les connexions établies et reliées : c'est à dire, lorsque j'ai une connexion, je l'a maintient en acceptant le flux entrant et sortant
+- accepter les requêtes PING en entrée et en sortie (icmp)
+- règle de redirection de port DNAT
+- refuser le reste : c'est à dire drop en input et en forward
+Remarque : la dernière étape consiste à sauvegarder les règles afin qu'elles deviennent persistente (si on reboot / éteint la machine, les règles ne disparraissent pas)
+
+Tester si le service tourne sur la raspberry : service fail2ban status
+
