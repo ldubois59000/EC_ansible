@@ -1,0 +1,4 @@
+
+###Rappel logwatch, qu'est ce que c'est : ###
+Logwatch est un outil d'analyse de logs qui génère des rapports sur les activités du système en analysant les fichiers de logs. Il est principalement utilisé pour la surveillance système, la détection d'intrusions les diagnostic et l'envoie de rapport automatisé par mail.
+Ici on installe et configure logwatch de manière à ce qu'il nous envoie des mails de rapport puis on lance une tâche automatisé dans le crontab pour que le service chaque jour à 1h10 du matin.
