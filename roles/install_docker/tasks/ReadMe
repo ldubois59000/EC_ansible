@@ -1,0 +1,6 @@
+###Rappel Docker, qu'est ce que c'est : ### 
+Docker est une plateforme de conteunerisation. Un contenair est un environnement d’exécution léger, et d’une alternative aux méthodes de virtualisation traditionnelles basées sur les machines virtuelles.
+Afin de créer un point d'entrée sécurisé sur notre réseau, j'ai décidé de faire tourné différent service dans des contenair docker, la tasks permet de : 
+- installer docker
+- s'assurer qu'il est bien installé
+- lancer docker
