@@ -1,0 +1,7 @@
+
+###Rappel Pihole, qu'est ce que c'est : ###
+C'est un bloqueur de publicité à l'ensemble des machines de notre réseau et le gérer de manière centralisée. Pi-Hole est un DNS « sinkhole », comprendre « entonnoir ». Il va utiliser les requêtes DNS faites par vos appareils pour valider ou non le trafic et ainsi vous mettre à l’abri des adresses et domaines connus comme diffusant de la pub, des malwares, etc.
+
+Ici nous créons un contenair avec Pihole tournant dedans puis nous ajoutons l'adresse IP du contenair au fichier resolv.conf de la raspberry afin qu'elle utilise ce DNS plutôt que celui par défaut. 
+Afin de faire un test simple : 
+- aller sur https://canyoublockit.com/testing/ avant installation de piHole puis après et s'assurer qu'il n'y a plus de pub. 
