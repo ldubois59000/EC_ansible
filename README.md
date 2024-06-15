@@ -15,4 +15,16 @@ Chose à faire pour utiliser Ansible :
 - autoriser SSH : sudo raspi-config (puis interfaces options, enable ssh)
 
 # Description du projet réalisé
+Voici un schéma résumant le fonctionnement et l'interaction entre les services déployer : 
 ![alt text](https://github.com/ldubois59000/EC_ansible/blob/main/image.png?raw=true)
+
+Description : 
+Le firewall (qui est le point d'entrée), à l'aide de règle iptables va autorisé les flux entrant et sortant uniquement sur les ports qui nous intéresse (SSH, HTTP, HTTPS, ICMP ...). 
+Le reverse proxy ainsi que certaine règle iptables vont permettre la redirection de port (notamment les 8081,8082) vers les ports 80 de différents contenair docker respectif. 
+Dans ces contenair vont tourner différents service comme un serveur web Nginx ainsi que Pi-hole et son DNS, permettant de filtrer les pubs sur le réseaux. 
+Sur la machine cible, d'autres services fonctionne également comme rkhunter, logwatch et fail2ban. Au préalable, Postfix et mailutils ont également été déployer afin d'obtenir des 
+rapports des check des service rkhunter et logwatch. Ceci a été rendu possible avec une messagerie personnel gmail grâce à la double authentification activée et en désactivant la protection renforcée.
+
+Vous trouverez dans chaque role un petit ReadMe expliquant les actions réalisés. 
+Il y a deux branches "dev_france" m'ayant servit à sauvegarder progressivement mes avancés durant l'EC et la branche dev_suede, puisque les deux premiers mois de l'EC j'étais en mobilité international, 
+sans matériel mais j'ai essayé de faire quelques petites choses. 
