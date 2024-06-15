@@ -30,14 +30,19 @@ Il y a deux branches "dev_france" m'ayant servit à sauvegarder progressivement 
 
 Mes sources pour réaliser ce projet : 
 https://github.com/maxlareo/ansible-rkhunter/tree/master 
+
 https://github.com/shaderecker/ansible-pihole 
+
 https://github.com/robertdebock/ansible-role-logwatch 
+
 https://github.com/geerlingguy/ansible-role-postfix/tree/master 
+
 https://xavki.blog/iptables-tutoriaux-francais/
 
-Pour lancer le playbook : 
-sudo ansible-playbook -i inventory.yml playbook.yml
+Pour lancer le playbook : sudo ansible-playbook -i inventory.yml playbook.yml
+
 ping ma raspi : ansible machine -i inventory.yml -m ping
+
 sudo fail2ban-client set sshd unbanip IP_ADDRESS  => très pratique quand on se fait ban par fail2ban après 3 mots de passes erronés.
 
 
