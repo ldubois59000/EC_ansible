@@ -46,4 +46,4 @@ ping ma raspi : ansible machine -i inventory.yml -m ping
 
 sudo fail2ban-client set sshd unbanip IP_ADDRESS  => très pratique quand on se fait ban par fail2ban après 3 mots de passes erronés.
 
-
+docker ps => voir nos contenairs si ils tournent etc ...
