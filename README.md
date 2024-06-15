@@ -25,10 +25,11 @@ Description :
 
 - Sur la machine cible, d'autres services fonctionne également comme rkhunter, logwatch et fail2ban. Au préalable, Postfix et mailutils ont également été déployer afin d'obtenir des rapports des check des service rkhunter et logwatch. Ceci a été rendu possible avec une messagerie personnel gmail grâce à la double authentification activée et en désactivant la protection renforcée.
 
-Vous trouverez dans role un ReadMe expliquant les actions réalisés et pour plus de visibilé, dans chaque role un ReadMe sur le service.
+Vous trouverez dans role un ReadMe expliquant les actions réalisés et pour plus de visibilé, dans chaque role un ReadMe sur le service. 
 Il y a deux branches "dev_france" m'ayant servit à sauvegarder progressivement mes avancés durant l'EC et la branche dev_suede, puisque les deux premiers mois de l'EC j'étais en mobilité international, sans matériel mais j'ai essayé de faire quelques petites choses. 
 
 Mes sources pour réaliser ce projet : 
+
 https://github.com/maxlareo/ansible-rkhunter/tree/master 
 
 https://github.com/shaderecker/ansible-pihole 
