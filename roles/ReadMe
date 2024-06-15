@@ -99,3 +99,26 @@ La tasks :
 Pour tester le bon fonctionnement de postfix : 
 echo "test o" | mail -s "test" lisa.dbs59@gmail.com
 
+### Web Serveur Nginx ###
+Qu'est ce que Nginx ? 
+C'est un serveur web open source.
+
+Auparavant j'ai essayé une autre configuration en utilisant les fichiers dans templates et un reverse-proxy cependant sur la raspberry ou sur un ordinateur étant sur le même réseau impossible de charger la page web. J'ai mené une petite investigation : 
+
+- docker ps : Le docker fonctionnait bien sur la raspberry
+J'ai ensuite rencontré des problèmes pour restart le docker car il n'arrivait pas à le kill
+- sudo docker exec -it PID /bin/bash : Pour rentrer dans le docker
+- service nginx status : le serveur tournait bien à l'interieur du docker 
+
+Considérant avoir perdu beaucoup de temps, j'ai préféré changer de configuration et donc les fichiers dans le dossier templates sont obsolètes et non utilisé.
+Voici ce qui fonctionne : 
+
+Explication : 
+- Création d'un contenair docker dans lequel on va faire tourner notre serveur web Nginx
+- Tirer une image de serveur Nginx
+- Lancer le contenair Nginx sur le port 8082 (avec redirection de port sur le 80 du contenair)
+
+Pour tester le bon fonctionnement : 
+sur la machine master (situé sur le même réseau que la raspberry), aller à l'adresse de la raspberry : http://192.168.10.86:8082 et on arrive sur la page web par défaut de Nginx.
+
+
