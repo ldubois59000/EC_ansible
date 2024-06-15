@@ -1,0 +1,5 @@
+### Hostname ### 
+Le hostname est le nom que la machine va avoir sur le réseau, ici nous lui attribuons "raspi"
+
+avec l'ajout de l'hostname on peut maintenant se connecter sans renseigner l'adresse ip cible : 
+ssh -i /tmp/lisa test@raspi
