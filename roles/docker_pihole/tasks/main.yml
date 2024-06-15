@@ -1,0 +1,25 @@
+- name: Create PiHole Container
+  docker_container:
+    name: pihole
+    image: pihole/pihole:latest
+    networks:
+      - name: docker_network
+        ipv4_address: 192.168.1.2
+        ipv6_address: 2001:db8:1::2
+    env:
+      TZ: "Europe/Paris"
+    ports:
+      - "8053:53/tcp"
+      - "8053:53/udp"
+      - "8081:80/tcp"
+    volumes:
+      - './etc-pihole:/etc/pihole'
+      - './etc-dnsmasq.d:/etc/dnsmasq.d'
+    restart_policy: always
+
+- name: Ensure DNS server IP is set in resolv.conf
+  lineinfile:
+    path: /etc/resolv.conf
+    regexp: '^nameserver'
+    line: 'nameserver 192.168.1.2'
+    state: present

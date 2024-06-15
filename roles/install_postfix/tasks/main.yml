@@ -1,0 +1,41 @@
+- name: Install Postfix and mailutils
+  apt:
+    name:
+      - postfix
+      - mailutils
+    state: present
+
+- name: Configure Postfix to use gmail for rkhunter et logwatch
+  template:
+    src: main.cf.j2
+    dest: /etc/postfix/main.cf
+  vars:
+    smtp_server: smtp.gmail.com
+    smtp_port: 587
+    smtp_tls_security_level: encrypt
+    smtp_sasl_auth_enable: "yes"
+    smtp_sasl_password_maps: hash:/etc/postfix/sasl_passwd
+    smtp_sasl_security_options: noanonymous
+    smtp_tls_CAfile: /etc/ssl/certs/ca-certificates.crt
+    gmail_user: "rsocial59@gmail.com"
+    gmail_password: "hztl hfia nxfn mkkj"
+
+- name: Create sasl_passwd file for Gmail
+  template:
+    src: sasl_passwd.j2
+    dest: /etc/postfix/sasl_passwd
+    owner: root
+    group: root
+    mode: 0600
+  vars:
+    gmail_user: "rsocial59@gmail.com"
+    gmail_password: "hztl hfia nxfn mkkj"
+
+- name: Hash sasl_passwd file
+  command: postmap /etc/postfix/sasl_passwd
+
+- name: Restart postfix service
+  service:
+    name: postfix
+    state: restarted
+    

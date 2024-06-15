@@ -1,0 +1,26 @@
+- name: Install RKHunter
+  apt:
+    name: rkhunter
+    state: present
+
+- name: Configure /etc/rkhunter.conf
+  template:
+    src: rkhunter.conf.j2
+    dest: /etc/rkhunter.conf
+    owner: root
+    group: root
+    mode: 0600
+
+- name: Configure rkhunter cron job
+  cron:
+    name: "Run rkhunter scan"
+    minute: 0
+    hour: 1
+    job: "/usr/bin/rkhunter --cronjob"
+
+#- name: Run RKHunter database update
+#  command: rkhunter --update
+
+#- name: Run RKHunter with checks
+#  command: rkhunter --checkall --sk
+#  no_log: true

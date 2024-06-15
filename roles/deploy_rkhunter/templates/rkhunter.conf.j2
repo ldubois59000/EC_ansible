@@ -1,0 +1,29 @@
+# Configuration file for rkhunter
+# Managed by Ansible
+
+# Paths
+UPDATE_MIRRORS=1
+MIRRORS_MODE=0
+WEB_CMD=""
+
+# Logging
+LOGFILE=/var/log/rkhunter.log
+LOGDIR=/var/log/rkhunter
+DBDIR=/var/lib/rkhunter/db
+
+# Email settings
+MAILON_WARNING="rsocial59@gmail.com"
+MAIL_CMD="mail -s '[rkhunter] Warnings found on {{ ansible_hostname }}'"
+
+# Other settings
+ALLOW_SSH_ROOT_USER=no
+ALLOW_SSH_PROT_V1=0
+ENABLE_TESTS="all"
+DISABLE_TESTS="none"
+
+# Whitelist
+SCRIPTWHITELIST="/bin/egrep"
+
+# Cron
+CRON_DAILY_RUN="yes"
+CRON_DB_UPDATE="yes"

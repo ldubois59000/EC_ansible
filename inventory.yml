@@ -1,0 +1,8 @@
+all:
+  children:
+    machine:
+      hosts:
+        ma_raspi:
+          ansible_host: 192.168.10.86
+          ansible_user: ec
+

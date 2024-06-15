@@ -1,0 +1,25 @@
+- name: Génération de la clé
+  openssh_keypair:
+    path: /tmp/lisa
+    type: rsa
+    size: 4096
+    state: present
+    force: no
+  delegate_to: localhost
+  run_once: yes
+
+- name: Création de l'utilisateur test
+  user:
+    name: test
+    shell: /bin/bash
+    groups: sudo
+    append: yes
+    password: "{{ 'password' | password_hash('sha512') }}"
+  become: yes
+
+- name: Déploiement de la clé SSH
+  authorized_key: 
+    user: test
+    key: "{{ lookup('file', '/tmp/lisa.pub') }}"
+    state: present
+  become: yes

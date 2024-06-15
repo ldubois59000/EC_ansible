@@ -1,0 +1,19 @@
+- name: Install logwatch
+  apt:
+    name: logwatch
+    state: present
+
+- name: Copy logwatch configuration
+  template:
+    src: logwatch.conf.j2
+    dest: /etc/logwatch/conf/logwatch.conf
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Configure logwatch cron job
+  cron:
+    name: "Run logwatch"
+    minute: 10
+    hour: 1
+    job: "/usr/sbin/logwatch"

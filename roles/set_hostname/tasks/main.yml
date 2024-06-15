@@ -1,0 +1,3 @@
+- name: Définir le nouveau hostname
+  hostname:
+    name: raspi
