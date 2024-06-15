@@ -1,0 +1,4 @@
+###Rappel Reverse-Proxy, qu'est ce que c'est : ###
+Reverse-proxy : 
+Un reverse-proxy est un serveur intermédiaire qui se situe entre les clients et les serveurs backend (serveurs web, bases de données, etc.). 
+Ici j'ai configuré le reverse-proxy pour gérer la redirection des ports 8081 et 8081 vers ceux de deux contenairs docker respectifs dans lesquelles vont tourner piHole et un serveur web Nginx.
