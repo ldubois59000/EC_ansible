@@ -1,0 +1,12 @@
+### Rappel fail2ban,  qu'est ce que c'est : ###
+Fail2ban est un outil de sécurité qui aide à protéger les systèmes Unix/Linux contre les attaques par force brute et d'autres types d'intrusions. 
+Il fonctionne en surveillant les fichiers de logs pour des tentatives de connexion suspectes et en appliquant des règles de pare-feu pour bloquer les adresses IP malveillantes.
+
+Description des actions réalisés par ansible : 
+- Installer Fail2ban et met à jour le cache APT
+- Démarrer le service Fail2ban et l'activer pour qu'il démarre automatiquement au démarrage du système.
+- Crée ou mettre à jour le fichier de configuration jail.local pour Fail2ban avec les règles pour SSH, Apache (et plus tard Nginx)
+- [sshd] : Configure Fail2ban pour surveiller les logs SSH.
+- [nginx-http-auth] : Configure Fail2ban pour surveiller les logs d'authentification Nginx
+
+Tester le bon fonctionnement : service fail2ban status
