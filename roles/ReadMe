@@ -33,4 +33,33 @@ Reverse-proxy :
 Un reverse-proxy est un serveur intermédiaire qui se situe entre les clients et les serveurs backend (serveurs web, bases de données, etc.). 
 Ici j'ai configuré le reverse-proxy pour gérer la redirection des ports 8081 et 8081 vers ceux de deux contenairs docker respectifs dans lesquelles vont tourner piHole et un serveur web Nginx.
 
+###Rappel RKhunter, qu'est ce que c'est : ###
+rkhunter (pour Rootkit Hunter) est un programme qui essaye de détecter les rootkits, portes dérobées et exploits. Comme logwatch, il est possible d'obtenir un rapport automatisé par mail. C'est ce que j'ai fais. 
+La tasks installe puis configure RKhunter de manière à envoyer des rapports à l'adresse mail rsocial59@gmail.com grâce aux fichiers de configuration. Les tasks commenté permettent de faire aux déploiement un update et de lancer un check entier, cependant comme celle ci sont relativement longues, j'ai fais le choix de ne les commenté pour le développement.
+De plus, lors du checkall, des validations manuelles étaient requises entre certains check, d'où l'option --sk (skip keypress). 
+
+### Rappel SSH, qu'est ce que c'est : ###
+SSH est un shell nous permettant de prendre la main sur une machine distante. Il utilise le port 22. 
+
+Création d'une clé SSH sur la machine Master (localhost) dans /tmp
+Création sur la machine cible d'un utilisateur (ici nommé test) 
+Déploiment sur cet utilisateur de la clé SSH.
+
+Pour tester : 
+sur la raspi :
+id test - vérifier la bonne création de l'user
+sudo ls /home/test/.ssh - vérifier la création de authorized_keys
+
+sur la machine master : 
+ssh -i /tmp/lisa test@192.168.10.86 
+
+### Hostname ### 
+Le hostname est le nom que la machine va avoir sur le réseau, ici nous lui attribuons "raspi"
+
+avec l'ajout de l'hostname on peut maintenant se connecter sans renseigner l'adresse ip cible : 
+ssh -i /tmp/lisa test@raspi
+
+###Rappel Pihole, qu'est ce que c'est : ###
+
+
 
