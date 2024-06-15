@@ -15,3 +15,4 @@ Chose à faire pour utiliser Ansible :
 - autoriser SSH : sudo raspi-config (puis interfaces options, enable ssh)
 
 # Description du projet réalisé
+![alt text](https://github.com/ldubois59000/EC_ansible/blob/main/image.jpg?raw=true)
