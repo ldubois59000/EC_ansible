@@ -1,0 +1,4 @@
+###Rappel RKhunter, qu'est ce que c'est : ###
+rkhunter (pour Rootkit Hunter) est un programme qui essaye de détecter les rootkits, portes dérobées et exploits. Comme logwatch, il est possible d'obtenir un rapport automatisé par mail. C'est ce que j'ai fais. 
+La tasks installe puis configure RKhunter de manière à envoyer des rapports à l'adresse mail rsocial59@gmail.com grâce aux fichiers de configuration. Les tasks commenté permettent de faire aux déploiement un update et de lancer un check entier, cependant comme celle ci sont relativement longues, j'ai fais le choix de ne les commenté pour le développement.
+De plus, lors du checkall, des validations manuelles étaient requises entre certains check, d'où l'option --sk (skip keypress). 
