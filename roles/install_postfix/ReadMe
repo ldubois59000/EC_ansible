@@ -1,0 +1,12 @@
+###Rappel Postfix, qu'est ce que c'est : ###
+Postfix est un serveur de messagerie électronique et un logiciel libre. Il se charge de la livraison de courriers électroniques et a été conçu comme une alternative plus rapide, plus facile à administrer et plus sécurisée que l'historique Sendmail.
+Grâce à la double authentification sur gmail, j'ai généré un mot de passe unique me permettant d'utiliser le serveur SMTP de google avec postfix. Ce service va nous permettre l'envoie des rapports automatisé pour RKhunter & logwatch. 
+
+La tasks : 
+- Install postfix et mailutils
+- configure postfix via au fichier de conf main.cf
+- Création du fichier sasl_passwd pour y inclure le mot de passe générer via google.
+- Création du hash et relance du servie
+
+Pour tester le bon fonctionnement de postfix : 
+echo "test o" | mail -s "test" lisa.dbs59@gmail.com
