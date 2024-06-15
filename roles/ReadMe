@@ -24,3 +24,5 @@ Remarque : la dernière étape consiste à sauvegarder les règles afin qu'elles
 
 Tester si le service tourne sur la raspberry : service fail2ban status
 
+###Rappel logwatch, qu'est ce que c'est : ###
+Logwatch est un outil d'analyse de logs qui génère des rapports sur les activités du système en analysant les fichiers de logs. Il est principalement utilisé pour la surveillance système, la détection d'intrusions les diagnostic et l'envoie de rapport automatisé par mail.
